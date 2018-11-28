@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>Learning ASP.NET Core</title>
+		<script type="text/javascript" src="jquery.js"></script>
+	</head>
+	<body>
+		<h1>Welcome Visitor</h1>
+		<form action="#">
+			<p>
+				<b>Name: </b>
+				<input type="text" id="nameText"/>
+				<input type="button" id="readButton" value="Read" />
+			</p>
+			<p>
+				<b>Comment</b><br/>
+				<textarea id="commentText" cols="32" rows="4"></textarea><br/>
+				<input type="button" id="writeButton" value="Write" />
+			</p>
+		</form>
+		<script type="text/javascript">
+			var svcUrl = "api/feedbacks";
+			$("#readButton").click(function(){
+				$.ajax(svcUrl + "/" + $("#nameText").val(), {cache: false})
+				.done(function(result){
+					$("#commentText").val(result.comment);
+				})
+				.fail(function(xhr, ts, error){
+					$("#commentText").val(error);	
+				});
+			});
+			$("#writeButton").click(function(){
+				var resource = JSON.stringify({
+					from: $("#nameText").val(),
+					comment: $("#commentText").val()
+				});
+				$.ajax(svcUrl, {type: "POST", contentType: "application/json", data: resource})
+				.done(function(result){
+					$("#commentText").val(result);	
+				})
+				.fail(function(xhr, ts, error){
+					$("#commentText").val(error);		
+				});
+			});
+		</script>
+		<p>
+			<a href="index.html">View All Feedbacks</a>
+		</p>
+	</body>
+</html>
+

@@ -1,0 +1,16 @@
+@page "{name?}"
+
+@{
+	var visitorName = RouteData.Values["name"] ?? "Visitor";
+}
+
+<html>
+	<head>
+		<title>Learning ASP.NET Core</title>
+	</head>
+
+	<body>
+		<h1>Welcome @visitorName</h1>
+		<b>Time on the server: </b>@DateTime.Now
+	</body>
+</html>

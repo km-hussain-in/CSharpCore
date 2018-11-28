@@ -1,0 +1,27 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Learning ASP.NET Core</title>
+	</head>
+	<body>
+		<h1>Register Visit</h1>
+		<p>
+			<form asp-action="Create">
+				<b>Name: </b>
+				<input type="text" name="nameToRegister" required="required" />
+				<input type="submit" value="Register" />
+			</form>
+		</p>
+		<p>
+			<a asp-controller="Home" asp-action="Index">Registered Visitors</a>
+		</p>
+		@await Component.InvokeAsync("CountVisits", new {after = DateTime.MinValue, before = DateTime.Now})
+	</body>
+</html>
+
+
+
+

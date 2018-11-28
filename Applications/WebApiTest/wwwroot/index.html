@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Learning ASP.NET Core</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.ajax({
+					url: 'api/feedbacks',
+					type: 'GET',
+					cache: false,
+					success: function(result){
+						$.each(result, function(i, v){
+							var item = "<li>"
+								+ "<b>" + v.comment + "</b><br/>"
+								+ "-<i>" + v.from + "</i><hr/>"
+								+ "</li>"
+							$("ol:last").append(item);
+						});
+					},
+					error: function(){
+						alert("Cannot load feedbacks, try later!");
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Visitor Feedbacks</h1>
+		<ol>
+		</ol>
+		<p>
+			<a href="create.html">Submit Your Feedback</a>
+		</p>
+	</body>
+</html>
+
