@@ -11,13 +11,6 @@ namespace WebApiTest.Models
 		{
 			Database.EnsureCreated();
 		}
-
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<FeedbackInfo>()
-				    .ToTable("Feedbacks")
-				    .HasKey(p => p.From);			
-		}
 	}
 }
 

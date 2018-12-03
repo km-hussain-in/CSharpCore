@@ -27,7 +27,7 @@ namespace WebApiTest.Controllers
 		[HttpGet("{id}")]
 		public ActionResult<FeedbackInfo> ReadFeedback(string id)
 		{
-			FeedbackInfo feedback = store.Feedbacks.FirstOrDefault(entry => entry.From == id);
+			FeedbackInfo feedback = store.Feedbacks.FirstOrDefault(entry => entry.Id == id);
 
 			if(feedback == null)
 				return NotFound();
@@ -39,7 +39,7 @@ namespace WebApiTest.Controllers
 		[HttpPost]
 		public string WriteFeedback(FeedbackInfo info)
 		{
-			FeedbackInfo feedback = store.Feedbacks.FirstOrDefault(entry => entry.From == info.From);
+			FeedbackInfo feedback = store.Feedbacks.FirstOrDefault(entry => entry.Id == info.Id);
 			string result;
 
 			if(feedback == null)
@@ -49,7 +49,7 @@ namespace WebApiTest.Controllers
 			}
 			else
 			{
-				feedback.Comment = info.Comment;
+				feedback.Text = info.Text;
 				result = "Updated";
 			}		
 
