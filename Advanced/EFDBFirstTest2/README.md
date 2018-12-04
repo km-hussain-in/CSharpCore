@@ -6,6 +6,7 @@ mkdir Controls
 mkdir Views
 mkdir Models
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add package Microsoft.EntityFrameworkCore.Proxies
 dotnet build
 dotnet run
 </pre>
