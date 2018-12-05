@@ -4,10 +4,10 @@
   <li><a href="MappingTest">Web-application path mapping</a></li>
   <li><a href="MiddlewareTest">Web-application middle-wares</a></li>
   <li><a href="MvcRouteTest">MVC controllers and views</a></li>
-  <li><a href="TagHelperTest">Tag-helpers for razor views</a></li>
   <li><a href="ModelBindingTest">MVC web-application with data model</a></li>
   <li><a href="DIModelTest">Dependency injections and view components</a></li>
   <li><a href="WebApiTest">MVC Web API and static web pages</a></li>
+  <li><a href="EFDBFirstTest">Entity Framework with existing database</a></li>
   <li><a href="RazorPageTest">Razor pages basics</a></li>
   <li><a href="PageModelTest">Razor pages with page models</a></li>
 </ol>
