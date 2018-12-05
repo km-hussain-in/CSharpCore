@@ -6,7 +6,7 @@ namespace EFModelTest.Models
 {
 	public class PersistentVisitorRegistry : DbContext, IVisitorRegistry
 	{
-		public DbSet<Visitor> Visitors {get; set;}
+		public DbSet<Visitor> Visitors {get; set;} //by convention, Visitor entity will be mapped to Visitors table
 
 		protected override void OnConfiguring(DbContextOptionsBuilder builder)
 		{
