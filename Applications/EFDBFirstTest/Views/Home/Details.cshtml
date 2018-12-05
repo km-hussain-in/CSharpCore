@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model EFDBFirstTest.Models.SiteViewModel
+
+<html>
+	<head>
+		<title>Learning ASP.NET Core</title>
+	</head>
+	<body>
+		<h1>@Model.SiteName Visitors</h1>
+		<table border="1">
+			<tr>
+				<th>Name</th>
+				<th>Frequency</th>
+				<th>Recent</th>
+			</tr>
+		@foreach(var item in Model.SiteVisitors)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.Frequency</td>
+				<td>@item.Recent</td>
+			</tr>
+		}
+		</table>
+		<p>
+			<a asp-controller="Home" asp-action="Index">Popular Sites</a>
+		</p>
+	</body>
+</html>
+
+
+
+
