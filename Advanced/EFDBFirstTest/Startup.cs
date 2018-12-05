@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EFModelTest
+namespace EFDBFirstTest
 {
 	public class Startup
 	{
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
-			//services.AddSingleton<Models.IVisitorRegistry, Models.TransientVisitorRegistry>();
-			services.AddSingleton<Models.IVisitorRegistry, Models.PersistentVisitorRegistry>();
+			services.AddSingleton<Models.IAppDbModel, Models.Annotational.AppDbContext>();
+			//services.AddSingleton<Models.IAppDbModel, Models.Fluent.AppDbContext>();
 		}
 
 		public void Configure(IApplicationBuilder app)

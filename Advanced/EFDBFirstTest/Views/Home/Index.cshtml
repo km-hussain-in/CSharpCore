@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<EFDBFirstTest.Models.ISite>
+
+<html>
+	<head>
+		<title>Learning ASP.NET Core</title>
+	</head>
+	<body>
+		<h1>Popular Sites</h1>
+		<table border="1">
+			<tr>
+				<th>Name</th>
+				<th>Location</th>
+				<th>Ticket</th>
+				<th>See</th>
+			</tr>
+		@foreach(var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Location</td>
+				<td>@(item.Ticket ?? 0.0M)</td>
+				<td><a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">Visitors</a></td>
+			</tr>
+		}
+		</table>
+	</body>
+</html>
+
+
+
+

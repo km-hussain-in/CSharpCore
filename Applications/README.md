@@ -6,7 +6,7 @@
   <li><a href="MvcRouteTest">MVC controllers and views</a></li>
   <li><a href="TagHelperTest">Tag-helpers for razor views</a></li>
   <li><a href="ModelTest">MVC web-application data model</a></li>
-  <li><a href="EFModelTest">Dependency injections and view components</a></li>
+  <li><a href="DIModelTest">Dependency injections and view components</a></li>
   <li><a href="WbApiTest">MVC Web API and static web pages</a></li>
   <li><a href="RazorPageTest">Razor pages basics</a></li>
   <li><a href="PageModelTest">Razor pages with page models</a></li>
