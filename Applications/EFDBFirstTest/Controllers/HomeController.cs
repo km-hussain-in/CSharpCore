@@ -22,7 +22,7 @@ namespace EFDBFirstTest.Controllers
 		{
 			ISite site = model.GetSiteById(id);
 			if(site != null)
-				return View(new SiteViewModel{SiteName = site.Name, SiteVisitors = model.GetSiteVisitors(id)});
+				return View(site);
 			return NotFound();
 		}
 

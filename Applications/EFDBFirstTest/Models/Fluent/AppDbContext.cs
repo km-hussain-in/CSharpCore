@@ -30,6 +30,8 @@ namespace EFDBFirstTest.Models.Fluent
 
 		//virtual required for lazy loading so the property can be overridden by the proxy 
 		public virtual ICollection<Visitor> Visitors {get; set;}
+
+		IEnumerator<IVisitor> ISite.GetEnumerator() => Visitors.GetEnumerator();
 	}
 
 	public class AppDbContext : DbContext, IAppDbModel
@@ -60,13 +62,7 @@ namespace EFDBFirstTest.Models.Fluent
 
 		public ISite GetSiteById(int siteId)
 		{
-			return Sites.Find(siteId);
-		}
-
-		public IEnumerable<IVisitor> GetSiteVisitors(int siteId)
-		{
-			Site site = Sites.Find(siteId);
-			return site.Visitors; //automatic lazy loading of child entities
+			return Sites.Find(siteId); //automatic lazy loading of child entities
 		}
 	}
 }

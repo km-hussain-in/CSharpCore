@@ -8,8 +8,8 @@ namespace EFDBFirstTest
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
-			services.AddSingleton<Models.IAppDbModel, Models.Annotational.AppDbContext>();
-			//services.AddSingleton<Models.IAppDbModel, Models.Fluent.AppDbContext>();
+			//services.AddSingleton<Models.IAppDbModel, Models.Annotational.AppDbContext>();
+			services.AddSingleton<Models.IAppDbModel, Models.Fluent.AppDbContext>();
 		}
 
 		public void Configure(IApplicationBuilder app)

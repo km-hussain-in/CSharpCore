@@ -32,7 +32,9 @@ namespace EFDBFirstTest.Models.Annotational
 
 		public decimal? Ticket {get; set;}
 
-		public ICollection<Visitor> Visitors {get; set;} = new List<Visitor>();
+		public ICollection<Visitor> Visitors {get; set;}
+
+		IEnumerator<IVisitor> ISite.GetEnumerator() => Visitors.GetEnumerator();
 	}
 
 	public class AppDbContext : DbContext, IAppDbModel
@@ -51,14 +53,10 @@ namespace EFDBFirstTest.Models.Annotational
 
 		public ISite GetSiteById(int siteId)
 		{
-			return Sites.Find(siteId);
-		}
-
-		public IEnumerable<IVisitor> GetSiteVisitors(int siteId)
-		{
 			Site site = Sites.Find(siteId);
 			Entry(site).Collection(e => e.Visitors).Load(); //explicit loading of child entities
-			return site.Visitors;	
+			return site;
 		}
+
 	}
 }
