@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Learning ASP.NET Core</title>
+</head>
+<body>
+    <h1>Welcome Visitor</h1>
+    <p>
+	<b>Request : </b>
+	<input id="requestInput"/>
+	<button id="sendButton" type="submit">Send</button>
+    </p>
+    <p id="responseOutput"></p>
+    <script>
+        var requestInput = document.getElementById("requestInput");
+        var responseOutput = document.getElementById("responseOutput");
+        var sendButton = document.getElementById("sendButton");
+ 
+        sendButton.onclick = function () {
+            var socket = new WebSocket("ws://localhost:5000/reverse");
+            socket.onopen = function (event) {
+                socket.send(requestInput.value);
+	    };
+            socket.onmessage = function (event) {
+                responseOutput.innerHTML = "<b>Response: </b><i>" + event.data + "</i>";
+	        socket.close(1000, "Closing from client");
+            };
+       };
+
+    </script>
+</body>
+</html>
