@@ -9,24 +9,43 @@
     <p>
 	<b>Request : </b>
 	<input id="requestInput"/>
-	<button id="sendButton" type="submit">Send</button>
+	<button id="sendButton" type="submit" disabled="disabled">Send</button>
     </p>
-    <p id="responseOutput"></p>
+    <p id="responseOutput"><i>Not connected</i></p>
+    <button id="connectButton" type="submit">Connect</button>
     <script>
+        var connectButton = document.getElementById("connectButton");
         var requestInput = document.getElementById("requestInput");
         var responseOutput = document.getElementById("responseOutput");
         var sendButton = document.getElementById("sendButton");
+	var socket;
+
+        connectButton.onclick = function() {
+	    if(connectButton.innerText == 'Connect'){
+                socket = new WebSocket("ws://localhost:5000/reverse");
+                socket.onopen = function (event) {
+                    connectButton.innerText = "Disconnect";
+                    sendButton.disabled = false; 
+	            responseOutput.innerHTML = "<i>Connected</i>";               
+                };
+                socket.onmessage = function (event) {
+                    responseOutput.innerHTML = "<b>Response: </b><i>" + event.data + "</i>";
+                };
+	    }else{
+                if(socket){
+                    socket.close(1000, "Closing from client");
+                    socket = null;
+                }
+                connectButton.innerText = "Connect";
+                sendButton.disabled = true;
+                responseOutput.innerHTML = "<i>Not connected</i>";
+            }
+        };
  
         sendButton.onclick = function () {
-            var socket = new WebSocket("ws://localhost:5000/reverse");
-            socket.onopen = function (event) {
-                socket.send(requestInput.value);
-	    };
-            socket.onmessage = function (event) {
-                responseOutput.innerHTML = "<b>Response: </b><i>" + event.data + "</i>";
-	        socket.close(1000, "Closing from client");
-            };
-       };
+           if(socket)
+               socket.send(requestInput.value)
+        };
 
     </script>
 </body>
