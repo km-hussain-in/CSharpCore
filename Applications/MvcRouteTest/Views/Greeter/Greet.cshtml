@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
+@addTagHelper *, MvcRouteTest
+
 <html>
 	<head>
 		<title>Learning ASP.NET Core</title>
 	</head>
 	<body>
 		<h1>Welcome @ViewBag.Visitor</h1>
-		<b>Current time is </b>@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+		<b>Current time is </b><span server-time-format="yyyy-MM-dd HH:mm:ss"></span>
 	</body>
 </html>

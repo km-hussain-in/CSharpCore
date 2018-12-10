@@ -8,7 +8,7 @@ namespace MiddlewareTest
 		public void Configure(IApplicationBuilder app)
 		{
 			app.UseCounter();
-			app.RunWelcomePage();
+			app.MapWelcomePageTo("/hello");
 		}
 	}
 }

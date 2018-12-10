@@ -1,4 +1,4 @@
-<h4>Razor pages basics</h4>
+<h4>Web applications with razor pages/h4>
 
 <pre>
 mkdir Pages
