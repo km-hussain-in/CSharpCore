@@ -1,6 +1,6 @@
 "use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/auction").build();
+var connection = new signalR.HubConnectionBuilder().withUrl("../auction").build();
 
 function outputError(msg) {
     document.getElementById("errorOutput").innerHTML = msg;
