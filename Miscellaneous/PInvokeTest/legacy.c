@@ -47,8 +47,6 @@ double EMI(const Loan* info, Scheme policy)
 	return info->amount * i / (1 - Power(1 + i, -m));
 }
 
-
-
-//Linux  : cc -shared -fPIC legacy.c -o bin/Debug/netcoreapp2.1/liblegacy.so
-//MacOS  : clang -dynamiclib legacy.c -o bin/Debug/netcoreapp2.1/liblegacy.dylib
-//Windows: cl /LD /Febin\Debug\netcoreapp2.1\legacy.dll legacy.c
+//Windows: cl /LD /Febin\Debug\netcoreapp2.2\legacy.dll legacy.c
+//MacOS  : clang -dynamiclib legacy.c -o bin/Debug/netcoreapp2.2/liblegacy.dylib
+//Linux  : cc -shared -fPIC legacy.c -o bin/Debug/netcoreapp2.2/liblegacy.so
