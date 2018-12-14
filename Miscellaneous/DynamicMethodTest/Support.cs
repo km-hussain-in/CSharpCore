@@ -9,26 +9,22 @@ namespace DynamicMethodTest
 
         private static Func<T, T, T> MakeAddOperation()
         {
-            return MakeBinaryOperation(OpCodes.Add, "op_Addition");
-        }
-
-        private static Func<T, T, T> MakeBinaryOperation(OpCode code, string name)
-        {
             Type t = typeof(T);
             Type[] signature = { t, t };
-            DynamicMethod dm = new DynamicMethod(name, t, signature, typeof(Operators<T>));
+            DynamicMethod dm = new DynamicMethod("Add", t, signature, typeof(Operators<T>));
             ILGenerator gen = dm.GetILGenerator();
 
             gen.Emit(OpCodes.Ldarg_0);
             gen.Emit(OpCodes.Ldarg_1);
             if (t.IsPrimitive)
-                gen.Emit(code);
+                gen.Emit(OpCodes.Add);
             else
-                gen.EmitCall(OpCodes.Call, t.GetMethod(name, signature), null);
+                gen.EmitCall(OpCodes.Call, t.GetMethod("op_Addition", signature), null);
             gen.Emit(OpCodes.Ret);
 
             return (Func<T, T, T>)dm.CreateDelegate(typeof(Func<T, T, T>));
         }
+
     }
 
     class Support
