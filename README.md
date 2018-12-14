@@ -6,5 +6,5 @@
   <li><a href="Miscellaneous">C# - Assorted Techniques</a></li>
 </ol>
 <p>
-  All code samples have been tested on Windows 10, macOS 10.14 and Rasbian 9 with <a href="https://dotnet.microsoft.com/download/dotnet-core/2.2">.NET Core SDK 2.2</a>
+  All code samples have been tested on Windows 10, macOS 10.14 and RaspberryPi 3 with <a href="https://dotnet.microsoft.com/download/dotnet-core/2.2">.NET Core SDK 2.2</a>
 </p>
