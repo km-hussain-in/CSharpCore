@@ -34,8 +34,8 @@ static double Power(double base, long index)
 {
 	if(index < 0)
 		return Power(1 / base, -index);
-	if(index == 1)
-		return base;
+	if(index == 0)
+		return 1;
 	return base * Power(base, index - 1);
 }
 
