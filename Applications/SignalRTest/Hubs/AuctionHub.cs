@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace SignalRTest.Hubs
 {
-    public class AuctionHub : Hub<IAuctionHub>
+    public class AuctionHub : Hub<IBidder>
     {
         private static double currentPrice = 50;
         private static object sync = new object();
