@@ -17,9 +17,9 @@ namespace MiddlewareTest
 			return builder.UseMiddleware<CounterMiddleware>();
 		}
 
-		public static IApplicationBuilder MapWelcomePageTo(this IApplicationBuilder builder, string path)
+		public static IApplicationBuilder MapWelcomePage(this IApplicationBuilder builder)
 		{
-			return builder.Map(path, app => app.Run(MakeWelcomePage));
+			return builder.Map("/welcome", app => app.Run(MakeWelcomePage));
 		}
 
 		class CounterService
@@ -45,7 +45,8 @@ namespace MiddlewareTest
 
 			public async Task Invoke(HttpContext context)
 			{
-				context.Items["RequestCount"] = _counter.GetNextCount();
+				if(context.Request.Path.Value.Contains("/welcome"))
+					context.Items["RequestCount"] = _counter.GetNextCount();
 				await _next.Invoke(context);
 			}
 		
