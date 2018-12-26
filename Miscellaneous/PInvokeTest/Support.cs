@@ -6,10 +6,10 @@ namespace PInvokeTest
 {
 	class Support
 	{
-		[DllImport("legacy")]
+		[DllImport("native")]
 		extern static int GreatestDivisor(int first, int second);
 
-		[DllImport("legacy")]        
+		[DllImport("native")]        
 		extern static int Encrypt(StringBuilder buffer, int count, string key);
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -21,7 +21,7 @@ namespace PInvokeTest
         
 		delegate float Scheme(short period);
 
-		[DllImport("legacy", EntryPoint="EMI")]        
+		[DllImport("native", EntryPoint="EMI")]        
 		extern static double GetInstallment(ref Loan info, Scheme policy);
 
 		public void Run(string[] args)
