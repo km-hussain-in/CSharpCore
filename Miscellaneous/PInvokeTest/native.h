@@ -1,7 +1,7 @@
-#ifndef LEGACY_H
-#define LEGACY_H
+#ifndef NATIVE_H
+#define NATIVE_H
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 #define EXPORT __declspec(dllexport)
 #else
 #define EXPORT

@@ -1,4 +1,4 @@
-#include "legacy.h"
+#include "native.h"
 #include <string.h>
 
 long GreatestDivisor(long first, long second)
@@ -47,6 +47,3 @@ double EMI(const Loan* info, Scheme policy)
 	return info->amount * i / (1 - Power(1 + i, -m));
 }
 
-//Windows: cl /LD /Febin\Debug\netcoreapp2.2\native.dll native.c
-//MacOS  : clang -dynamiclib legacy.c -o bin/Debug/netcoreapp2.2/libnative.dylib
-//Linux  : cc -shared -fPIC legacy.c -o bin/Debug/netcoreapp2.2/libnative.so
