@@ -1,4 +1,4 @@
-<h4>Creating native library</h4>
+<h4>Making native library</h4>
 
 <pre>
 Windows: cl /LD /Fe[EXECUTABLE-PATH]\native.dll native.c
