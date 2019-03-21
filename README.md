@@ -7,7 +7,7 @@
     <li><i><a href="Language/StructTypeDemo/DemoApp">Struct Types</a></i></li>
     <li><i><a href="Language/ClassTypeDemo/DemoApp">Class Types</a></i></li>
     <li><i><a href="Language/GenTypeDemo/DemoApp">Generic Types</a></i></li>
-    <li><i><a href="Language/ProperyDemo/DemoApp">Properties</a></i></li>
+    <li><i><a href="Language/PropertyDemo/DemoApp">Properties</a></i></li>
     <li><i><a href="Language/OperatorDemo/DemoApp">Operator Overloading</a></i></li>
     <li><i><a href="Language/BaseClassDemo1/DemoApp">Class Inheritance</a></i></li>
     <li><i><a href="Language/BaseClassDemo2/DemoApp">Object Class</a></i></li>
