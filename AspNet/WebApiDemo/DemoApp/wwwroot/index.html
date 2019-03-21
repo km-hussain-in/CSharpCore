@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DemoApp</title>
+    </head>
+    <body>
+        <h1>Our Feedbacks</h1>
+        <ol id="feedbacksList"></ol>
+        <p>
+            <a href="submit.html">Submit Feedback</a>
+        </p>
+        <script>
+            window.onload = async function(){
+                let feedbacksList = document.getElementById("feedbacksList");
+                let response = await fetch('rest/feedbacks');
+                let content = await response.json();
+                for(let i in content){
+                    let stars = '*'.repeat(content[i].rating);
+                    let feedbacksListItem = document.createElement("li");
+                    feedbacksListItem.innerHTML = `<b>${content[i].comment}</b><br/>`
+                        + `- <i>${content[i].name}</i> [${stars}]<hr/>`;
+                    feedbacksList.appendChild(feedbacksListItem);
+                }
+            };
+        </script>
+    </body>
+</html>

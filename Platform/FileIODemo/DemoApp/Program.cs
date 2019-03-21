@@ -1,0 +1,63 @@
+﻿using System;
+using System.IO;
+using System.IO.MemoryMappedFiles;
+
+namespace DemoApp
+{
+    class Program
+    {
+        static void Encode(string source, string target)
+        {
+            const int size = 80;
+            byte[] buffer = new byte[80];
+            using(FileStream input = new FileStream(source, FileMode.Open))
+            {
+                using(FileStream output = new FileStream(target, FileMode.CreateNew))
+                {
+                    while(input.Position < input.Length)
+                    {
+                        int n = input.Read(buffer, 0, size);
+                        for(int i = 0; i < n; ++i)
+                            buffer[i] = (byte)(buffer[i] ^ '#');
+                        output.Write(buffer, 0, n);                        
+                    }
+                }
+            }
+        }
+
+        static void Reverse(FileInfo target)
+        {
+            using(var mapping = MemoryMappedFile.CreateFromFile(target.Name))
+            {
+                using(var view = mapping.CreateViewAccessor(0, target.Length))
+                {
+                    for(long i = 0, j = view.Capacity - 1; i < j; ++i, j--)
+                    {
+                        byte ib = view.ReadByte(i);
+                        byte jb = view.ReadByte(j);
+                        view.Write(i, jb);
+                        view.Write(j, ib);
+                    }
+                }
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                Encode(args[0], args[1]);
+                Reverse(new FileInfo(args[1]));
+            }
+            catch(IndexOutOfRangeException)
+            {
+                Console.WriteLine("Provide source-file and target-file on command-line!");
+            }
+            catch(IOException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@page
+@model RegisterModel
+@{
+    Layout = "_Layout";
+}
+<h1>Welcome Visitor</h1>
+<form method="POST">
+    <b>Your Name:</b>
+    <input asp-for="Visitor.Name"/>
+    <button type="submit">Register</button>
+    <p>
+        <span asp-validation-for="Visitor.Name"></span>               
+    </p>
+</form>
+<p>
+    <a asp-page="Index">Our Visitors</a>
+</p>

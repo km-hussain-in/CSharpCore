@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <!--
+    <ProjectReference Include="..\Banking\Banking.csproj" />
+    -->
+    <!--
+    <Reference Include="Banking">
+      <HintPath>../Banking/bin/Debug/netstandard2.0/Banking.dll</HintPath>
+    </Reference>
+    -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Banking" Version="1.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+</Project>
