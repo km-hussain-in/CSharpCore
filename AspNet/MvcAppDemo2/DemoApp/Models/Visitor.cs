@@ -8,7 +8,7 @@ namespace DemoApp.Models
     {
         [Required]
         [StringLength(32, MinimumLength = 4)]
-        public string Name {get; set;}
+        public string Id {get; set;}
 
         public int Frequency {get; set;} = 1;
 

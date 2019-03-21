@@ -6,11 +6,9 @@ namespace DemoApp.Models
 {
     public class Visitor
     {
-        public int Id {get; set;}
-
         [Required]
         [StringLength(32, MinimumLength = 4)]
-        public string Name {get; set;}
+        public string Id {get; set;}
 
         public int Frequency {get; set;} = 1;
 

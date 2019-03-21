@@ -29,7 +29,7 @@ namespace DemoApp.Models
 
         public void WriteVisitor(Visitor value)
         {
-            Visitor visitor = Visitors.FirstOrDefault(entry => entry.Name == value.Name);
+            Visitor visitor = Visitors.FirstOrDefault(entry => entry.Id == value.Id);
             if(visitor == null)
                 Visitors.Add(value);
             else
