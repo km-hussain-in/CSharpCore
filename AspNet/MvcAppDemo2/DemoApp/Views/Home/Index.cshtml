@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 @model IEnumerable<DemoApp.Models.Visitor>
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <html>
     <head>
         <title>DemoApp</title>
@@ -23,7 +22,7 @@
             }
         </table>
         <p>
-            <a asp-action="Register" asp-controller="Home">Register Your Visit</a>
+            @Html.ActionLink("Register Your Visit", "Register")
         </p>
     </body>
 </html>
