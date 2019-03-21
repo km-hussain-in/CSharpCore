@@ -2,11 +2,11 @@ using System;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace XmlLinqTest
+namespace DemoApp
 {
-    public class DemoApp
+    public class DepartmentDoc
     {
-	static XmlSerializer serializer = new XmlSerializer(typeof(Department));
+	    static XmlSerializer serializer = new XmlSerializer(typeof(Department));
         const string store = "dept.xml";
 
         public void Save(Department info)
