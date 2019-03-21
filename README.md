@@ -2,7 +2,7 @@
 <ul>
   <li>
   <b>Language Fundamentals</b>
-  <ol type='1'>
+  <ol style="list-style-type:decimal;">
     <li><i><a href="Language/MethodDemo/DemoApp">Methods</a></i></li>
     <li><i><a href="Language/StructTypeDemo/DemoApp">Struct Types</a></i></li>
     <li><i><a href="Language/ClassTypeDemo/DemoApp">Class Types</a></i></li>
