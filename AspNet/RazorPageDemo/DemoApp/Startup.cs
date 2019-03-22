@@ -17,9 +17,7 @@ namespace DemoApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ISet<string>, SortedSet<string>>();
-            services.AddMvc()
-                .AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Greet", ""))
-                .SetCompatibilityVersion(CompatibilityVersion.Latest);
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

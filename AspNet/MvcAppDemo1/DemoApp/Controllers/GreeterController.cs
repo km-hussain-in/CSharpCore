@@ -13,7 +13,7 @@ namespace DemoApp.Controllers
 
         public IActionResult Greet(string name, [FromServices] ISet<string> names)
         {
-            ViewBag.Visitor = name ?? "World";
+            ViewBag.Visitor = name;
             IEnumerable<string> others;
             lock(names)
             {
