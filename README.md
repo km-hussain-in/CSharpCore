@@ -38,7 +38,7 @@
     <li><i><a href="Platform/FileIODemo/DemoApp">File I/O</a></i></li>
     <li><i><a href="Platform/DataIODemo/DemoApp">Data I/O</a></i></li>
     <li><i><a href="Platform/SerializationDemo/DemoApp">Object Serialization</a></i></li>
-    <li><i><a href="Platform/XmlLinqDemo/DemoApp">XML Serialization</a></i></li>
+    <li><i><a href="Platform/XmlSerializerDemo/DemoApp">XML Serialization</a></i></li>
     <li><i><a href="Platform/NamedPipeDemo/DemoApp">Named Pipes</a></i></li>
     <li><i><a href="Platform/TcpSocketDemo/DemoApp">TCP Sockets</a></i></li>
     <li><i><a href="Platform/UdpSocketDemo/DemoApp">UDP Sockets</a></i></li>
