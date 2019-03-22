@@ -10,7 +10,7 @@ namespace DemoApp.Models
     {
         const string document = "appdoc.xml";
         
-        static XmlSerializer serializer = new XmlSerializer(typeof(List<Visitor>));
+        static XmlSerializer serializer = new XmlSerializer(typeof(List<Visitor>), new XmlRootAttribute("Visitors"));
 
         public List<Visitor> Visitors {get; set;}
 
