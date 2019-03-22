@@ -2,15 +2,22 @@
 
 namespace DemoApp
 {
+    using Models;
+
     class Program
     {
         static void Main(string[] args)
         {
-            var model = new Models.VisitorDocModel();
+            IVisitorModel model = new Models.VisitorDocModel();
             if(args.Length > 0 && args[0] == "-register")
-                new Views.Register(model).Present();
+            {
+                Visitor input = new Visitor();
+                new Views.Register().Present(input);
+                if(input.Id != null)
+                    model.WriteVisitor(input);
+            }
             else
-                new Views.Index(model).Present();
+                new Views.Index().Present(model.ReadVisitors());
         }
     }
 }

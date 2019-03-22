@@ -6,20 +6,13 @@ namespace DemoApp.Views
 
     public class Register
     {
-        private IVisitorModel _model;
-
-        public Register(IVisitorModel model) => _model = model;
-
-        public void Present()
+        public void Present(Models.Visitor model)
         {
             Console.WriteLine("Register Your Visit");
             Console.WriteLine();
             Console.Write("Your Name: ");
             string name = Console.ReadLine();
-            if(name.Length > 3)
-                _model.WriteVisitor(new Visitor{Id = name});
-            else
-                Console.WriteLine("Invalid name!");
+            model.Id = name.Length > 0 ? name : null;
         }
     }
 }
