@@ -21,11 +21,11 @@ namespace DemoApp
         public void Configure(IApplicationBuilder app)
         {
             app.UseCounter();
-            //app.Run(Welcome);
-            app.UseRouter(route => route.MapGet("Greet/{name=Visitor}", Welcome));
+            //app.Run(Greeter);
+            app.UseRouter(route => route.MapGet("Greet/{name=World}", Greeter));
         }
 
-        private async Task Welcome(HttpContext context)
+        private async Task Greeter(HttpContext context)
         {
             var visits = context.GetVisitCount();
             var visitor = context.GetRouteData().Values["name"];
@@ -34,7 +34,7 @@ namespace DemoApp
                 <html>
                     <head><title>WebHostTest</title></head>
                     <body>
-                        <h1>Welcome {visitor}</h1>
+                        <h1>Hello {visitor}</h1>
                         <p>Current time is {DateTime.Now}</p>
                         <p>Number of visits is {visits}</p>
                     </body>
