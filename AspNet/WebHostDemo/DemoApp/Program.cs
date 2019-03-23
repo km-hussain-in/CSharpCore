@@ -28,7 +28,7 @@ namespace DemoApp
         private async Task Greeter(HttpContext context)
         {
             var visits = context.GetVisitCount();
-            var visitor = context.GetRouteData().Values["name"];
+            var visitor = context.GetRouteValue("name");//context.GetRouteData().Values["name"];
             await context.Response.WriteAsync
             ($@"
                 <html>
