@@ -48,9 +48,7 @@ namespace DemoApp
 
         public async Task Invoke(HttpContext context)
         {
-            string id = context.Request.Path.Value.Substring(1);
-            int count = _counter.GetNextCount(id);
-            context.Items["Visitor"] = new {Name = id, Frequency = count};
+            context.Items["VisitCount"] = _counter.GetNextCount(context.Request.Path.Value);
             await _next.Invoke(context);
         }
     }
@@ -62,5 +60,9 @@ namespace DemoApp
 
         public static IApplicationBuilder UseCounter(this IApplicationBuilder app) 
             => app.UseMiddleware<CounterMiddleware>();
+
+        public static int? GetVisitCount(this HttpContext context) 
+            => (int?)context.Items["VisitCount"];
+
     }
 }

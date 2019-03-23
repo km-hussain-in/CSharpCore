@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Routing;
 
 namespace DemoApp
 {
@@ -14,25 +15,28 @@ namespace DemoApp
         {
             services.AddCounter();
             //services.AddCounter(options => options.Increment = 2);
+            services.AddRouting();
         }
 
         public void Configure(IApplicationBuilder app)
         {
             app.UseCounter();
-            app.Run(Welcome);
+            //app.Run(Welcome);
+            app.UseRouter(route => route.MapGet("Greet/{name=Visitor}", Welcome));
         }
 
         private async Task Welcome(HttpContext context)
         {
-            dynamic visitor = context.Items["Visitor"];
+            var visits = context.GetVisitCount();
+            var visitor = context.GetRouteData().Values["name"];
             await context.Response.WriteAsync
             ($@"
                 <html>
                     <head><title>WebHostTest</title></head>
                     <body>
-                        <h1>Welcome {visitor.Name}</h1>
+                        <h1>Welcome {visitor}</h1>
                         <p>Current time is {DateTime.Now}</p>
-                        <p>Number of visit is {visitor.Frequency}</p>
+                        <p>Number of visits is {visits}</p>
                     </body>
                 </html>
             ");
