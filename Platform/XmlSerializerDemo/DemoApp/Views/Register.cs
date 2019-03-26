@@ -2,8 +2,6 @@ using System;
 
 namespace DemoApp.Views
 {
-    using Models;
-
     public class Register
     {
         public void Present(Models.Visitor model)
