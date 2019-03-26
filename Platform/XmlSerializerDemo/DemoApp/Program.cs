@@ -2,22 +2,17 @@
 
 namespace DemoApp
 {
-    using Models;
 
     class Program
     {
         static void Main(string[] args)
         {
-            IVisitorModel model = new Models.VisitorDocModel();
-            if(args.Length > 0 && args[0] == "-register")
+            if(args.Length > 0)
             {
-                Visitor input = new Visitor();
-                new Views.Register().Present(input);
-                if(input.Id != null)
-                    model.WriteVisitor(input);
+                var controller = new Controllers.VisitorsController();
+                if(!controller.InvokeAction(args[0]))
+                    Console.WriteLine("Cannot {0}.", args[0]);
             }
-            else
-                new Views.Index().Present(model.ReadVisitors());
         }
     }
 }

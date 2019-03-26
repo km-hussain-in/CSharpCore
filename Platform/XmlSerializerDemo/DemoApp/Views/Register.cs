@@ -4,13 +4,19 @@ namespace DemoApp.Views
 {
     public class Register
     {
-        public void Present(Models.Visitor model)
+        public bool Present(Models.Visitor model)
         {
             Console.WriteLine("Register Your Visit");
             Console.WriteLine();
             Console.Write("Your Name: ");
-            string name = Console.ReadLine();
-            model.Id = name.Length > 0 ? name : null;
+            model.Id = Console.ReadLine();
+            if(model.Id.Length == 0)
+            {
+                Console.WriteLine("Name is required!");
+                return false;
+            }
+            return true;
         }
+
     }
 }
