@@ -1,0 +1,23 @@
+@model IEnumerable<string>
+@addTagHelper *, DemoApp
+@{
+	var visitor = ViewBag.Visitor;
+}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DemoApp</title>
+	</head>
+	<body>
+		<h1>Hello @visitor</h1>
+		<p>Number of visits is <span demo-count-for="@visitor"></span></p>
+		<h3>Other Visitors</h3>
+		<ul>
+			@foreach(var item in Model)
+			{
+				<li><a href="@item">@item</a></li>
+			}
+		</ul>
+	</body>
+</html>
+

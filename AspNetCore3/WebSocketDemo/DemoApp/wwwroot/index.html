@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DemoApp</title>
+        <script src="auction.js"></script>
+    </head>
+    <body>
+        <h1>Welcome To Auction</h1>
+        <p>
+            <b>New Price: </b>
+            <input type="text" id="requestInput" value="0" required="required"/>
+            <button id="bidButton" disabled="disabled">Bid</button>
+        </p>
+        <p id="responseOutput"></p>
+        <p>
+            <button id="statusButton">Join</button>
+        </p>
+        <script>
+            let requestInput = document.getElementById("requestInput");
+            let responseOutput = document.getElementById("responseOutput");
+            let bidButton = document.getElementById("bidButton");
+            let statusButton = document.getElementById("statusButton");
+
+            function received(info){
+                let desc = isNaN(info) ? 'Message' : 'Current Price'
+                responseOutput.innerHTML = `<b>${desc}: </b><i>${info}</i>`;
+            }
+
+            function joined(){
+                statusButton.innerText = "Leave";
+                bidButton.disabled = false;
+            }
+
+            statusButton.onclick = function(){
+                 if(statusButton.innerText == 'Join')
+                    joinAuction(joined, received);
+                else{
+                    leaveAuction();
+                    statusButton.innerText = "Join";
+                    bidButton.disabled = true;
+                }
+            }
+
+            bidButton.onclick = function(){
+                doBidding(requestInput.value);
+            }
+        </script>
+    </body>
+</html>

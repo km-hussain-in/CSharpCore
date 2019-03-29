@@ -1,0 +1,35 @@
+@page "{name?}"
+@{
+	string visitor = (string)RouteData.Values["name"] ?? "World";
+}
+@inject ISet<string> names;
+@functions
+{
+	IEnumerable<string> NamesOtherThan(string name)
+	{
+		lock(names)
+		{
+			names.Add(name);
+			return from n in names where n != name select n;
+		}
+	}
+}
+@addTagHelper *, DemoApp
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DemoApp</title>
+	</head>
+	<body>
+		<h1>Hello @visitor</h1>
+		<vc:count-visits for-name="@visitor"/>
+		<h3>Other Visitors</h3>
+		<ul>
+			@foreach(var item in NamesOtherThan(visitor))
+			{
+				<li><a href="@item">@item</a></li>	
+			}
+		</ul>
+	</body>
+</html>
+

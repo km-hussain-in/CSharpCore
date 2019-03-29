@@ -1,0 +1,51 @@
+@page
+@model DemoApp.Pages.DetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DemoApp</title>
+		<style>
+			.linkButton{
+				background: none;
+				border: none;
+				color: blue;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1>Welcome @Model.Visitor.Id</h1>
+		<h3>Your Visits</h3>
+		<table border="1">
+			<tr>
+				<td>Spot Name</td>
+				<td>Visit Count</td>
+				<td>Last Visit</td>
+			</tr>
+			@foreach(var item in Model.Visitor.Visits)
+			{
+				<tr>
+					<td>@item.Spot</td>
+					<td>@item.Frequency</td>
+					<td>@item.Recent</td>
+				</tr>
+			}
+		</table>
+		<p>
+			<form method="POST">
+				<b>Spot Name:</b>
+				<input name="spotName" required="required"/>
+				<input type="submit" value="Register"/>
+			</form>
+		</p>
+		<p>
+			<form asp-page-handler="logout" method="POST">
+				<input type="submit" value="Sign Out" class="linkButton"/> 
+			</form>
+		</p>
+	</body>
+</html>
+

@@ -1,0 +1,30 @@
+@page
+@model DemoApp.Pages.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DemoApp</title>
+	</head>
+	<body>
+		<h1>Popular Sites</h1>
+		<table border="1">
+			<tr>
+				<th>Spot</th>
+				<th>Location</th>
+				<th>View</th>
+			</tr>
+			@foreach(var item in Model.Sites)
+			{
+				<tr>
+					<td>@item.Name</td>
+					<td>@item.Country</td>
+					<td>
+						<a asp-page="Details" asp-route-id="@item.Id">Visitors</a>
+					</td>
+				</tr>
+			}
+		</table>
+	</body>
+</html>
+

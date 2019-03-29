@@ -1,0 +1,26 @@
+@model DemoApp.Models.Visitor
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DemoApp</title>
+	</head>
+	<body>
+		<h1>Register Your Visit</h1>
+		<form method="POST" asp-controller="Home" asp-action="Register">
+			<p>
+				<b>Your Name: </b>
+				<input required="required" asp-for="Id"/>
+				<input type="submit" value="Submit"/>
+			</p>
+			<p>
+				<span asp-validation-for="Id"></span>
+			</p>
+		</form>
+		<p>
+			<a asp-controller="Home" asp-action="Index">Our Visitors</a>
+		</p>
+	</body>
+</html>
+
+
