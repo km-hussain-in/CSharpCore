@@ -1,8 +1,8 @@
 using System;
 
-namespace ThreadingTest
+namespace DemoApp
 {
-    static class DemoApp
+    static class Worker
     {
         public static void DoWork(int amount)
         {

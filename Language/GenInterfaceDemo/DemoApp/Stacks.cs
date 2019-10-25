@@ -14,7 +14,7 @@ namespace DemoApp
 
     public interface IStackCopier<out V>
     {
-        void Copy(IStackWriter<V> target);            
+        void Copy(IStackWriter<V> target);
     }
 
     public class FiniteStack<V> : IStackReader<V>, IStackWriter<V>, IStackCopier<V>

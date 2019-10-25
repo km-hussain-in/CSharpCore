@@ -40,7 +40,6 @@ namespace DemoApp
             b.Push("May");
             b.Push("April");
             b.Push("March");
-            a.Copy(b);
             var c = new FiniteStack<Interval>(5);
             c.Push(new Interval(4, 31));
             c.Push(new Interval(3, 42));

@@ -7,14 +7,14 @@ namespace BankingApp
     class Program
     {
 
-        static void PayQuaterlyInterest(Account[] accounts)
+        static void PayAnnualInterest(Account[] accounts)
         {
             foreach(Account acc in accounts)
             {
                 IProfitable p = acc as IProfitable; // acc is IProfitable ? (IProfitable) acc : null
                 if(p != null)
                 {
-                    decimal i = p.GetInterest(1) / 4;
+                    decimal i = p.GetAnnualInterest();
                     acc.Deposit(i);
                 }
             }
@@ -59,7 +59,7 @@ namespace BankingApp
             }
             else
             {
-                PayQuaterlyInterest(bank);
+                PayAnnualInterest(bank);
                 ApplyQuaterlyCharges(bank);
             }
             foreach(Account acc in bank)
