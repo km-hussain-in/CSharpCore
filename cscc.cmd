@@ -6,6 +6,8 @@ for /f %%i  in ('dotnet --version') do set sdkver=%%i
 for /f "tokens=2" %%i in ('dotnet --list-runtimes ^| find "Microsoft.NETCore.App"') do set fwkver=%%i
 set dotnetlib=%dotnethome%shared\Microsoft.NETCore.App\%fwkver%
 
+if "%1" == "" goto :help
+
 set prog=%~n1
 (
 	echo -r:"%dotnetlib%\netstandard.dll"
@@ -14,7 +16,7 @@ set prog=%~n1
 ) > %temp%\%prog%.rsp
 for %%f in ("%dotnetlib%\System.*.dll") do echo -r:"%%f" >> %temp%\%prog%.rsp
 
-dotnet "%dotnethome%sdk\%sdkver%\Roslyn\bincore\csc.dll" -d:NETCORE -nologo @%temp%\%prog%.rsp %*
+dotnet "%dotnethome%sdk\%sdkver%\Roslyn\bincore\csc.dll" -d:NETCOREAPP -nologo @%temp%\%prog%.rsp %*
 del %temp%\%prog%.rsp
 if exist %prog%.exe (
 	move /Y %prog%.exe %prog%.dll > NUL
@@ -32,6 +34,10 @@ if exist %prog%.exe (
 	)
 rem	if not exist %prog%.bat echo @dotnet %prog%.dll %%* > %prog%.bat	
 )
+goto done
+:help
+dotnet "%dotnethome%sdk\%sdkver%\Roslyn\bincore\csc.dll" -help
+:done
 
 
 
