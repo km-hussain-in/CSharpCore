@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package shopping;
+
+option java_multiple_files = true;
+
+message ItemInfoRequest {
+    string name = 1;
+}
+
+message ItemInfoReply {
+    double unitPrice = 1;
+	int32 currentStock = 2;
+}
+
+service ShopKeeper {
+    rpc GetItemInfo(ItemInfoRequest) returns (ItemInfoReply);
+	rpc GetItemNames(google.protobuf.Empty) returns (stream ItemInfoRequest);
+}
