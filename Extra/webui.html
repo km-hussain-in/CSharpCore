@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RESTWebUI</title>
+    </head>
+    <body>
+        <h1>Welcome Product Manager</h1>
+        <form>
+            <p>
+                <b>Product ID: </b>
+                <input type="text" id="productIdText" required="required"/>
+                <input type="button" id="getButton" value="Get"/>
+            </p>
+            <hr/>
+            <p>
+                <b>Price:</b> 
+                <input type="text" id="priceText" required="required"/>
+            </p>
+            <p>
+                <b>Stock:</b> 
+                <input type="text" id="stockText" required="required"/>
+            </p>
+            <hr/>
+	    <input type="button" id="putButton" value="Put"/>
+        </form>
+        <p>
+            <span id="statusOutput"></span><br/>
+        </p>
+        <script>
+            let productIdText = document.getElementById("productIdText");
+            let priceText = document.getElementById("priceText");
+	    let stockText = document.getElementById("stockText");
+            let statusOutput = document.getElementById("statusOutput");
+            document.getElementById("getButton").onclick = async function(){
+                let response = await fetch(`api/products/${productIdText.value}`);
+                if(response.ok){
+                    let result = await response.json();
+                    priceText.value = result.price;
+                    stockText.value = result.stock;
+                    statusOutput.innerText = "";
+                }else if(response.status == 404)
+                    statusOutput.innerText = "Product not found";
+            };
+            document.getElementById("putButton").onclick = async function(){
+                const request = {
+                    method: 'put',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        id: new Number(productIdText.value),
+                        price: new Number(priceText.value),
+                        stock: new Number(stockText.value)
+                    })
+                };
+                let response = await fetch("api/products/", request);
+                if(response.ok)
+                    statusOutput.innerText = "Product updated successfully";              
+                else
+                    statusOutput.innerText = response.status == 404 ? "Product not found": "Invalid product input";
+            };
+        </script>
+    </body>
+</html>
