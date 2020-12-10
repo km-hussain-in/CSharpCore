@@ -35,8 +35,8 @@
                 let response = await fetch(`api/products/${productIdText.value}`);
                 if(response.ok){
                     let result = await response.json();
-                    priceText.value = result.price;
-                    stockText.value = result.stock;
+                    priceText.value = result.Price;
+                    stockText.value = result.Stock;
                     statusOutput.innerText = "";
                 }else if(response.status == 404)
                     statusOutput.innerText = "Product not found";
@@ -46,9 +46,9 @@
                     method: 'put',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
-                        id: new Number(productIdText.value),
-                        price: new Number(priceText.value),
-                        stock: new Number(stockText.value)
+                        Id: new Number(productIdText.value),
+                        Price: new Number(priceText.value),
+                        Stock: new Number(stockText.value)
                     })
                 };
                 let response = await fetch("api/products/", request);
