@@ -7,7 +7,7 @@ CREATE TABLE `counters` (
   `cur_val` int NOT NULL,
   PRIMARY KEY (`ctr_name`)
 );
-INSERT INTO `counters` VALUES ('orders',4),('products',3);
+INSERT INTO `counters` VALUES ('orders',4),('products',4);
 
 CREATE TABLE `customers` (
   `cust_id` varchar(8) NOT NULL,
