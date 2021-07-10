@@ -1,0 +1,4 @@
+EXPORTS
+	ReverseString
+	SquareAll
+	SequenceSum
